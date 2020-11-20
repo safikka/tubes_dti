@@ -1,16 +1,17 @@
-import React from 'react'
-import { StyleSheet, Text, View, Button } from 'react-native'
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import LandingPage from './pages/LandingPage'
-import LoginScreen from './pages/LoginScreen'
+import React from 'react';
+import {StyleSheet, Text, View, Button} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import StackLogin from './router';
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <LoginScreen />
-  )
+    <NavigationContainer>
+      <StackLogin />
+    </NavigationContainer>
+  );
 }
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({});

@@ -6,39 +6,39 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 import Logo from '../../assets/icons/Logo.svg';
 import Circle from '../../assets/icons/circle.svg';
 import Circle2 from '../../assets/icons/circle2.svg';
+import Button from '../../components/Button';
 
-export default function LoginScreen() {
+export default function LoginScreen({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.logowrapper}>
         <Circle style={styles.circle} />
         <Circle2 style={styles.circle2} />
-        <Logo height={120} />
-        <Text style={styles.logotext}>mbayar.</Text>
+        <Animatable.View animation="bounceIn" duraton="5000">
+          <Logo height={120} />
+          <Text style={styles.logotext}>mbayar.</Text>
+        </Animatable.View>
       </View>
-      <View style={styles.footer}>
+      <Animatable.View style={styles.footer} animation="fadeInUp" duraton="5000">
         <Text style={styles.logintext}>Punten, login dulu kak</Text>
         <View style={styles.wrapperinput}>
           <Text style={styles.inputatas}>Email</Text>
-          <TextInput title="Masukkan email" style={styles.input} />
+          <TextInput placeholder="Masukkan email" style={styles.input} />
           <Text style={styles.inputatas}>Sandi</Text>
-          <TextInput title="Masukkan sandi" style={styles.input} />
+          <TextInput placeholder="Masukkan sandi" style={styles.input} />
         </View>
-        <View style={styles.buttonlogin}>
-          <TouchableOpacity onPress={() => alert('login')}>
-            <Text style={styles.buttontextlogin}>Login</Text>
-          </TouchableOpacity>
-        </View>
+        <Button text="Login" type="filled" onPress={() => alert('login')} />
         <View style={styles.buttonregist}>
           <Text style={styles.textregist}>Belum punya akun kak? </Text>
-          <TouchableOpacity onPress={() => alert('daftar')}>
+          <TouchableOpacity onPress={() => navigation.navigate('RegistScreen')}>
             <Text style={styles.buttontextRegist}>Sini daftar</Text>
           </TouchableOpacity>
         </View>
-      </View>
+      </Animatable.View>
     </View>
   );
 }
@@ -68,6 +68,7 @@ const styles = StyleSheet.create({
     color: 'white',
     fontFamily: 'Poppins-SemiBold',
     paddingBottom: 20,
+    textAlign: 'center',
   },
   footer: {
     flex: 1,
@@ -92,24 +93,13 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     borderColor: '#C4c4c4',
     paddingHorizontal: 15,
+    fontFamily: 'Poppins-Regular',
   },
   inputatas: {
     fontFamily: 'Poppins-Regular',
     fontSize: 14,
     color: '#c4c4c4',
     paddingTop: 10,
-  },
-  buttonlogin: {
-    borderRadius: 10,
-    backgroundColor: '#f53b50',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: 17,
-  },
-  buttontextlogin: {
-    fontFamily: 'Poppins-SemiBold',
-    fontSize: 14,
-    color: 'white',
   },
   buttonregist: {
     paddingTop: 20,

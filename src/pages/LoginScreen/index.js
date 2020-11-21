@@ -18,12 +18,12 @@ export default function LoginScreen({navigation}) {
       <View style={styles.logowrapper}>
         <Circle style={styles.circle} />
         <Circle2 style={styles.circle2} />
-        <Animatable.View animation="bounceIn" duraton="5000">
+        <Animatable.View animation="bounceIn" duration={1500}>
           <Logo height={120} />
           <Text style={styles.logotext}>mbayar.</Text>
         </Animatable.View>
       </View>
-      <Animatable.View style={styles.footer} animation="fadeInUp" duraton="5000">
+      <Animatable.View style={styles.footer} animation="fadeInUp" duration={1000}>
         <Text style={styles.logintext}>Punten, login dulu kak</Text>
         <View style={styles.wrapperinput}>
           <Text style={styles.inputatas}>Email</Text>
@@ -31,7 +31,7 @@ export default function LoginScreen({navigation}) {
           <Text style={styles.inputatas}>Sandi</Text>
           <TextInput placeholder="Masukkan sandi" style={styles.input} />
         </View>
-        <Button text="Login" type="filled" onPress={() => alert('login')} />
+        <Button text="Login" type="filled" onPress={() => navigation.navigate('HomeScreen')} />
         <View style={styles.buttonregist}>
           <Text style={styles.textregist}>Belum punya akun kak? </Text>
           <TouchableOpacity onPress={() => navigation.navigate('RegistScreen')}>

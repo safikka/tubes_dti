@@ -1,6 +1,7 @@
 import React from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import * as Animatable from 'react-native-animatable';
+import {TextInput} from 'react-native-gesture-handler';
 import Circle from '../../assets/icons/circle.svg';
 import Button from '../../components/Button';
 
@@ -10,10 +11,29 @@ export default function RegistScreen({navigation}) {
       <View style={styles.wrappercircle}>
         <Circle style={styles.circle} />
       </View>
-      <Animatable.View style={styles.form} animation="fadeInUp" duraton="5000">
+      <View style={styles.form}>
         <Text style={styles.registtext}>Monggo,</Text>
         <Text style={styles.registtext1}>diisi dulu ya kak</Text>
-      </Animatable.View>
+        <View style={styles.wrapperInput}>
+          <Text style={styles.inputatas}>Email</Text>
+          <TextInput placeholder="Masukkan email" style={styles.input} />
+          <Text style={styles.inputatas}>Sandi</Text>
+          <TextInput placeholder="Masukkan sandi" style={styles.input} />
+          <Text style={styles.inputatas}>Nama</Text>
+          <TextInput placeholder="Masukkan nama" style={styles.input} />
+          <Text style={styles.inputatas}>No. Handphone</Text>
+          <TextInput placeholder="Masukkan nomer" style={styles.input} />
+        </View>
+        <Button text="Daftar" type="filled" onPress={() => alert('daftar')} />
+        <View style={{paddingTop: 15}}>
+          <Button
+            text="Kembali"
+            type="outlined"
+            bordernya='outlined'
+            onPress={() => navigation.goBack()}
+          />
+        </View>
+      </View>
     </View>
   );
 }
@@ -51,5 +71,21 @@ const styles = StyleSheet.create({
   registtext1: {
     fontFamily: 'Poppins-SemiBold',
     fontSize: 20,
+  },
+  wrapperInput: {
+    paddingBottom: 25,
+  },
+  inputatas: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: 14,
+    color: '#c4c4c4',
+    paddingTop: 10,
+  },
+  input: {
+    borderWidth: 1,
+    borderRadius: 10,
+    borderColor: '#C4c4c4',
+    paddingHorizontal: 15,
+    fontFamily: 'Poppins-Regular',
   },
 });

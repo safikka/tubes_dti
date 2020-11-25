@@ -2,6 +2,10 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
+import HomeIcon from '../assets/icons/homeicon.svg'
+import TransaksiIcon from '../assets/icons/transaksimenu.svg'
+import ProfilIcon from '../assets/icons/profilmenu.svg'
+
 import LoginScreen from '../pages/LoginScreen';
 import RegistScreen from '../pages/RegisterScreen';
 import HomeScreen from '../pages/HomeScreen';
@@ -21,9 +25,16 @@ const Tab = createBottomTabNavigator();
 const HomeRoot = () => {
   return (
     <Tab.Navigator>
-      <Tab.Screen name="HomeScreen" component={HomeScreen} />
-      <Tab.Screen name="TransaksiScreen" component={TransaksiScreen} />
-      <Tab.Screen name="ProfileScreen" component={ProfileScreen} />
+      <Tab.Screen 
+        name="Home" 
+        component={HomeScreen}
+        options={{
+          tabBarIcon: () => {
+            <HomeIcon />
+          }}
+        } />
+      <Tab.Screen name="Transaksi" component={TransaksiScreen} />
+      <Tab.Screen name="Profil" component={ProfileScreen} />
     </Tab.Navigator>
   );
 };

@@ -102,7 +102,6 @@ const styles = StyleSheet.create({
     paddingTop: 10,
   },
   buttonregist: {
-    paddingTop: 20,
     flex: 1,
     flexDirection: 'row',
     alignItems: 'center',

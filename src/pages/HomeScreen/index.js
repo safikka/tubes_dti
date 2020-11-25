@@ -1,8 +1,9 @@
 import React from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
-import {ScrollView} from 'react-native-gesture-handler';
+import {StyleSheet, Text, View, Image, FlatList, ScrollView} from 'react-native';
 import Circle from '../../assets/icons/circlehome.svg';
 import Button from '../../components/Button';
+import Kotakan from '../../components/Kotakan';
+import DataDummy from '../../components/DataDummy';
 
 export default function HomeScreen({navigation}) {
   return (
@@ -18,7 +19,7 @@ export default function HomeScreen({navigation}) {
         />
         <View style={styles.wrapperNama}>
           <Text style={styles.text1}>Selamat datang,</Text>
-          <Text style={styles.text2}>Kak Squidward!</Text>
+          <Text style={styles.text2}>Kak Mahdy!</Text>
         </View>
       </View>
       <View style={styles.kontenAtas}>
@@ -38,16 +39,33 @@ export default function HomeScreen({navigation}) {
               <Text style={styles.textMenu}>Top Up</Text>
             </View>
             <View style={styles.jarakMenu}>
-              <Button size="small" bordernya="menu" logo="qrpay" onPress={() => navigation.navigate('QrScreen')} />
+              <Button
+                size="small"
+                bordernya="menu"
+                logo="qrpay"
+                onPress={() => navigation.navigate('QrScreen')}
+              />
               <Text style={styles.textMenu}>QR Pay</Text>
             </View>
             <View style={styles.jarakMenu}>
-              <Button size="small" bordernya="menu" logo="transfer" onPress={() => navigation.navigate('TransferScreen')} />
+              <Button
+                size="small"
+                bordernya="menu"
+                logo="transfer"
+                onPress={() => navigation.navigate('TransferScreen')}
+              />
               <Text style={styles.textMenu}>Transfer</Text>
             </View>
           </View>
         </View>
-        <View style={styles.history}></View>
+        <View style={styles.history}>
+          <Text style={styles.textHistory}>Transaksi terakhir kamu</Text>
+          <FlatList
+            style={styles.list}
+            data={DataDummy.dataTransfer}
+            renderItem={Kotakan}
+          />
+        </View>
       </View>
     </View>
   );
@@ -128,7 +146,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Regular',
     fontSize: 14,
     color: '#25282b',
-    paddingTop: 10,
     textAlign: 'center',
   },
   history: {
@@ -136,7 +153,16 @@ const styles = StyleSheet.create({
     backgroundColor: '#eaeaea',
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,
-    paddingVertical: 70,
+    paddingVertical: 30,
     paddingHorizontal: 25,
   },
+  textHistory: {
+    fontFamily: 'Poppins-Regular',
+    fontSize: 12,
+    color: '#25282b',
+    paddingBottom: 10,
+  },
+  list:{
+    flex:1
+  }
 });

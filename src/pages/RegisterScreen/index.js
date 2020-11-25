@@ -25,14 +25,12 @@ export default function RegistScreen({navigation}) {
           <TextInput placeholder="Masukkan nomer" style={styles.input} />
         </View>
         <Button text="Daftar" type="filled" onPress={() => alert('daftar')} />
-        <View style={{paddingTop: 15}}>
-          <Button
-            text="Kembali"
-            type="outlined"
-            bordernya='outlined'
-            onPress={() => navigation.goBack()}
-          />
-        </View>
+        <Button
+          text="Kembali"
+          type="outlined"
+          bordernya="outlined"
+          onPress={() => navigation.goBack()}
+        />
       </View>
     </View>
   );

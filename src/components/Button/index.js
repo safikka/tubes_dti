@@ -45,8 +45,12 @@ const Button = ({
       ? menu
       : null;
 
-  const stylelogo = {alignItems: 'center', justifyContent: 'center', padding: 10};
-  const wrapperLogo = {position:'absolute'};
+  const stylelogo = {
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 10,
+  };
+  const wrapperLogo = {position: 'absolute'};
   const logonya =
     logo === 'topup' ? (
       <Topup />
@@ -56,16 +60,26 @@ const Button = ({
       <Transfer />
     ) : null;
 
-  const buttonGede = <Text style={[textCommonStyle]}> {text} </Text>;
-  const buttonKecil = <View style={stylelogo}>
-                        <View style={wrapperLogo}>{logonya}</View>
-                      </View>;
+  const buttonGede = (
+    <View style={{paddingBottom: 20}}>
+      <View style={[containerCommonStyle, border]}>
+        <Text style={[textCommonStyle]}> {text} </Text>
+      </View>
+    </View>
+  );
+  const buttonKecil = (
+    <View style={{paddingBottom: 10}}>
+      <View style={[containerCommonStyle, border]}>
+        <View style={stylelogo}>
+          <View style={wrapperLogo}>{logonya}</View>
+        </View>
+      </View>
+    </View>
+  );
 
   return (
     <TouchableOpacity onPress={onPress} activeOpacity={0.7}>
-      <View style={[containerCommonStyle, border]}>
-        {size === 'large' ? buttonGede : buttonKecil}
-      </View>
+      {size === 'large' ? buttonGede : buttonKecil}
     </TouchableOpacity>
   );
 };

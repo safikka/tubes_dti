@@ -2,10 +2,6 @@ import React from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import HomeIcon from '../assets/icons/homeicon.svg'
-import TransaksiIcon from '../assets/icons/transaksimenu.svg'
-import ProfilIcon from '../assets/icons/profilmenu.svg'
-
 import LoginScreen from '../pages/LoginScreen';
 import RegistScreen from '../pages/RegisterScreen';
 import HomeScreen from '../pages/HomeScreen';
@@ -18,21 +14,15 @@ import QrKonfirmasi from '../pages/QrScreen/QrKonfirmasi';
 import QrNotif from '../pages/QrScreen/QrSukses';
 import TransferScreen from '../pages/Transfer/TransferScreen';
 import TransferNotif from '../pages/Transfer/TransferSukses';
+import TabBarKustom from '../components/CustomTabBar';
 
 const StackLogin = createStackNavigator();
 const Tab = createBottomTabNavigator();
 
 const HomeRoot = () => {
   return (
-    <Tab.Navigator>
-      <Tab.Screen 
-        name="Home" 
-        component={HomeScreen}
-        options={{
-          tabBarIcon: () => {
-            <HomeIcon />
-          }}
-        } />
+    <Tab.Navigator tabBar={(props) => <TabBarKustom {...props} />}>
+      <Tab.Screen name="Home" component={HomeScreen} />
       <Tab.Screen name="Transaksi" component={TransaksiScreen} />
       <Tab.Screen name="Profil" component={ProfileScreen} />
     </Tab.Navigator>
@@ -55,7 +45,6 @@ const StackSemua = ({navigation}) => (
     <StackLogin.Screen name="QrNotif" component={QrNotif} />
     <StackLogin.Screen name="TransferScreen" component={TransferScreen} />
     <StackLogin.Screen name="TransferNotif" component={TransferNotif} />
-    
   </StackLogin.Navigator>
 );
 

@@ -4,7 +4,7 @@ import Circle from '../../assets/icons/circle.svg';
 import Circle2 from '../../assets/icons/circle2.svg';
 import Button from '../../components/Button';
 
-export default function ProfileScreen() {
+export default function ProfileScreen({navigation}) {
   return (
     <View style={styles.container}>
       <View style={styles.kontenAtas}>
@@ -26,7 +26,7 @@ export default function ProfileScreen() {
         <View style={styles.wrapperButton}>
           <Button text="Ubah Profil" type="filled" onPress={() => alert('Ubah Profil')} />
           <Button text="Ubah Password" type="filled" onPress={() => alert('Ubah Password')} />
-          <Button text="Log Out" type="filled" onPress={() => alert('Log Out')} />
+          <Button text="Log Out" type="filled" onPress={() => navigation.navigate('LoginScreen')} />
         </View>
       </View>
     </View>
